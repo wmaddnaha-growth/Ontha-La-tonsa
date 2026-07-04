@@ -578,7 +578,7 @@ fbq('trackCustom', 'ViewContent');
       <div class="price-tag">450</div>
       <div class="price-label">جنيه مصري — سعر الإطلاق</div>
 
-      <a href="checkout.html" class="cta-btn" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب دلوقتي</a>
+      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب دلوقتي</a>
       
       <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:16px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
@@ -1029,7 +1029,7 @@ function showQuizResult() {
       <div class="price-tag" style="margin-bottom:4px;">450</div>
       <div class="price-label" style="margin-bottom:28px;">جنيه مصري</div>
 
-      <a href="checkout.html" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" class="cta-btn" style="font-size:19px;padding:20px;">احصلي على الكتاب دلوقتي ✦</a>
+      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" style="font-size:19px;padding:20px;">احصلي على الكتاب دلوقتي ✦</a>
       
       <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:20px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
@@ -1076,7 +1076,7 @@ function showQuizResult() {
       <strong>الأنثى اللي لا تُنسى</strong>
       كتاب رقمي خاص +18
     </div>
-    <a href="checkout.html" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" class="sticky-btn">احصلي على الكتاب — 450 جنيه</a>
+    <a href="javascript:void(0)" class="sticky-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب — 450 جنيه</a>
   </div>
 </div>
 
@@ -1228,5 +1228,233 @@ document.addEventListener('mouseleave', (e) => {
   }
 });
 </script>
+
+<!-- CHECKOUT MODAL OVERLAY -->
+<div id="checkout-modal-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:100000; display:none; align-items:center; justify-content:center; padding:15px; overflow-y:auto; backdrop-filter:blur(5px);">
+  <div class="checkout-modal-content" style="background:var(--surface-light); width:100%; max-width:500px; border-radius:16px; padding:30px; position:relative; margin:auto; box-shadow:0 15px 50px rgba(0,0,0,0.3); border:1px solid rgba(201, 169, 110, 0.3);">
+    <span onclick="closeCheckoutModal()" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#999; z-index:10;">&times;</span>
+    
+    <div class="checkout-header" style="text-align:center; margin-bottom:24px;">
+      <h2 style="color:var(--title-on-light); font-size:24px; margin-bottom:8px; font-family:var(--font-display);">إتمام الطلب</h2>
+      <p style="color:var(--clr-muted); font-size:14px;">كتاب الأنثى اللي لا تُنسى + الملحقات المجانية</p>
+    </div>
+
+    <div class="price-summary" style="background:rgba(201, 169, 110, 0.08); border:1px dashed var(--clr-gold); padding:16px; border-radius:12px; text-align:center; margin-bottom:24px;">
+      إجمالي المطلوب الدفع: <br>
+      <span style="font-size:28px; font-weight:900; color:var(--clr-gold-dark);">450</span> <span style="font-size:16px;">جنيه مصري</span>
+    </div>
+
+    <div class="alert-warning" id="warningMsg" style="background:#fff3cd; color:#856404; padding:12px; border-radius:8px; font-size:14px; margin-bottom:20px; text-align:center; font-weight:bold; border:1px solid #ffeeba; display:none;">
+      ⚠️ رجاءً لا تغلقي هذه الصفحة أثناء التحويل من تطبيق البنك.
+    </div>
+
+    <form id="checkoutForm">
+      <!-- Step 1 -->
+      <div id="checkoutStep1">
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">الاسم (يُفضل الاسم الأول فقط للحفاظ على الخصوصية)</label>
+          <input type="text" id="custName" placeholder="مثال: سارة" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+        </div>
+
+        <div class="form-group" style="margin-bottom:20px;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">رقم الواتساب (لإرسال الكتاب عليه)</label>
+          <input type="tel" id="custPhone" placeholder="مثال: 01000000000" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+        </div>
+
+        <button type="button" class="cta-btn" id="step1Btn" onclick="goToStep2()" style="width:100%; background:linear-gradient(135deg, var(--clr-gold) 0%, var(--clr-gold-dark) 100%); color:#fff; text-align:center; padding:18px; border-radius:12px; text-decoration:none; font-weight:800; font-size:18px; border:none; cursor:pointer;">التالي: بيانات الدفع ⬅️</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="checkoutStep2" style="display:none;">
+        <div class="bank-details" style="background:#fdfaf5; border:1px solid #f2e6cb; padding:20px; border-radius:12px; margin-bottom:24px;">
+          <h3 style="margin-top:0; color:var(--title-on-light); font-size:17px; margin-bottom:12px;">طرق الدفع المتاحة</h3>
+          <p style="font-size:14px; margin-bottom:16px;">قمي بتحويل <strong>450 جنيه</strong> على الرقم التالي (إنستاباي / فودافون كاش / محفظة بنكية):</p>
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px;">
+            <span style="font-weight:bold; font-size:20px; color:var(--clr-gold-dark);" id="phone1">01093637678</span>
+            <button type="button" onclick="copyText('phone1')" style="background:#f2e6cb; color:var(--title-on-light); border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-family:inherit; font-weight:700; font-size:14px;">نسخ</button>
+          </div>
+        </div>
+
+        <div class="file-upload" onclick="document.getElementById('receiptFile').click()" style="border:2px dashed var(--clr-gold); padding:24px; text-align:center; border-radius:12px; cursor:pointer; margin-bottom:20px; background:rgba(201, 169, 110, 0.03);">
+          <div style="font-size:32px; margin-bottom:8px;">🧾</div>
+          <strong style="color:var(--title-on-light); font-size:15px;">اضغطي هنا لرفع صورة إيصال التحويل</strong>
+          <div style="font-size:13px; color:var(--clr-muted); margin-top:8px;" id="fileNameDisplay">صيغة الصورة: JPG أو PNG</div>
+          <input type="file" id="receiptFile" accept="image/*" style="display:none;" onchange="handleFileSelect(event)">
+        </div>
+
+        <button type="submit" class="cta-btn" id="submitBtn" style="width:100%; background:linear-gradient(135deg, var(--clr-gold) 0%, var(--clr-gold-dark) 100%); color:#fff; text-align:center; padding:18px; border-radius:12px; text-decoration:none; font-weight:800; font-size:18px; border:none; cursor:pointer;">
+          <span id="btnText">تأكيد الطلب واستلام الكتاب</span>
+          <div class="loader" id="btnLoader" style="border:3px solid rgba(255,255,255,0.3); border-top:3px solid #fff; border-radius:50%; width:24px; height:24px; animation:spin 1s linear infinite; display:none; margin:0 auto;"></div>
+        </button>
+
+        <div class="whatsapp-bypass" style="text-align:center; margin-top:20px;">
+          <p style="font-size:13px; color:var(--clr-muted); margin-bottom:8px;">مش عارفة ترفعي الصورة؟ أو بتواجهي مشكلة؟</p>
+          <a href="#" id="waLink" target="_blank" onclick="fbq('trackCustom', 'WhatsAppBypass')" style="color:#25D366; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+            أرسلي الإيصال على الواتساب من هنا 💬
+          </a>
+        </div>
+      </div>
+    </form>
+
+    <div class="privacy-badge" style="text-align:center; font-size:13px; color:var(--clr-muted); margin-top:20px; display:flex; align-items:center; justify-content:center; gap:6px;">
+      🔒 بياناتك مشفرة ومحمية بالكامل ولا يتم مشاركتها مطلقاً.
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+input:focus { border-color: var(--clr-gold) !important; outline: none; box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2); }
+</style>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0jdlGbW-rRSTI9B2GTvDDiUgorHOMRS2V_0B2-vWfoZIY6kny4572GjZz5mjCY-Qi/exec";
+
+let orderId = localStorage.getItem('kf_order_id');
+if (!orderId) {
+  orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+  localStorage.setItem('kf_order_id', orderId);
+}
+
+let syncTimeout;
+let isInitiated = false;
+
+function openCheckoutModal() {
+  document.getElementById('checkout-modal-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkout-modal-overlay').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function copyText(elementId) {
+  const text = document.getElementById(elementId).innerText;
+  navigator.clipboard.writeText(text);
+  alert('تم نسخ الرقم: ' + text);
+}
+
+function liveSync() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  
+  if (name.length > 2 && phone.length >= 10 && !isInitiated) {
+    const payload = {
+      action: "initiate",
+      orderId: orderId,
+      name: name,
+      phone: phone,
+      price: "450"
+    };
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      isInitiated = true;
+    });
+  }
+}
+
+document.getElementById('custName').addEventListener('input', () => {
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(liveSync, 2000);
+});
+document.getElementById('custPhone').addEventListener('input', () => {
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(liveSync, 2000);
+  updateWaBypassLink();
+});
+
+function updateWaBypassLink() {
+  const name = document.getElementById('custName').value;
+  const msg = encodeURIComponent("مرحباً، أنا " + name + "، لقد قمت بالتحويل لطلب كتاب الأنثى اللي لا تُنسى وهذا هو الإيصال:");
+  document.getElementById('waLink').href = "https://wa.me/201553089928?text=" + msg;
+}
+
+function goToStep2() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  
+  if (!name || !phone) {
+    alert('برجاء إدخال الاسم ورقم الواتساب أولاً.');
+    return;
+  }
+  
+  if(typeof fbq === 'function') fbq('track', 'Lead');
+  
+  liveSync();
+  updateWaBypassLink();
+
+  document.getElementById('checkoutStep1').style.display = 'none';
+  document.getElementById('checkoutStep2').style.display = 'block';
+  document.getElementById('warningMsg').style.display = 'block';
+}
+
+let base64File = null;
+let mimeType = null;
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) {
+    document.getElementById('fileNameDisplay').innerText = "تم إرفاق: " + file.name;
+    document.getElementById('fileNameDisplay').style.color = "#25D366";
+    document.getElementById('fileNameDisplay').style.fontWeight = "bold";
+    
+    mimeType = file.type;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      base64File = e.target.result.split(',')[1];
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  if (!base64File) {
+    alert("برجاء إرفاق صورة إيصال التحويل أولاً!");
+    return;
+  }
+
+  const name = document.getElementById('custName').value;
+  const phone = document.getElementById('custPhone').value;
+
+  document.getElementById('btnText').style.display = 'none';
+  document.getElementById('btnLoader').style.display = 'block';
+  document.getElementById('submitBtn').disabled = true;
+
+  const payload = {
+    action: "upload",
+    orderId: orderId,
+    name: name,
+    phone: phone,
+    base64Data: base64File,
+    mimeType: mimeType
+  };
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  }).then(() => {
+    if(typeof fbq === 'function') fbq('track', 'Purchase', {value: 450, currency: 'EGP'});
+    alert("تم تأكيد طلبك بنجاح! سيتم مراجعة الإيصال وإرسال الكتاب لكِ على الواتساب فوراً.");
+    window.location.href = "https://wa.me/201553089928?text=" + encodeURIComponent("مرحباً، تم تحويل 450 جنيه ورفع الإيصال في الموقع بانتظار استلام الكتاب.");
+  }).catch(error => {
+    alert("حدث خطأ أثناء رفع الصورة، برجاء إرسال الإيصال على الواتساب.");
+    document.getElementById('btnText').style.display = 'block';
+    document.getElementById('btnLoader').style.display = 'none';
+    document.getElementById('submitBtn').disabled = false;
+  });
+});
+</script>
 </body>
+
 </html>
