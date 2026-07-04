@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأنثى اللي لا تُنسى — كتاب رقمي للمتزوجات فقط +18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* ── BASE COLORS ── */
+    --bg-dark: #120a0c;
+    --bg-light: #fdfaf5;
+    --surface-dark: #1b1215;
+    --surface-light: #ffffff;
+    
+    /* ── TEXT COLORS ── */
+    --text-on-dark: #e8dcca;
+    --title-on-dark: #fdfbf7;
+    --text-on-light: #4a3a3d;
+    --title-on-light: #1c1114;
+    
+    /* ── ACCENT COLORS ── */
+    --clr-gold: #c9a96e;
+    --clr-gold-dark: #a88548; /* For better contrast on light bg */
+    --clr-burgundy: #7a1f35;
+    --clr-rose: #b04060;
+    
+    /* ── BORDERS ── */
+    --border-dark: rgba(201, 169, 110, 0.15);
+    --border-light: rgba(0, 0, 0, 0.08);
+
+    --font-display: 'Cairo', sans-serif;
+    --font-body: 'Tajawal', sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-dark);
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); }
+
+  /* ── LAYOUT & SECTIONS ── */
+  section {
+    width: 100%;
+    padding: 80px 20px;
+  }
+  
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ── THEME CLASSES ── */
+  .section-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+  }
+  .section-dark .section-title { color: var(--title-on-dark); }
+  
+  .section-light {
+    background-color: var(--bg-light);
+    color: var(--text-on-light);
+  }
+  .section-light .section-title { color: var(--title-on-light); }
+  .section-light .section-title span { color: var(--clr-gold-dark); }
+  .section-light .gold-line { background: linear-gradient(90deg, var(--clr-gold-dark), transparent); }
+
+  /* ── GLOBAL COMPONENTS ── */
+  .tag-pill {
+    display: inline-block;
+    background: rgba(201, 169, 110, 0.12);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    color: var(--clr-gold);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+  .section-light .tag-pill {
+    background: rgba(168, 133, 72, 0.1);
+    border-color: rgba(168, 133, 72, 0.25);
+    color: var(--clr-gold-dark);
+  }
+
+  .section-title { font-size: clamp(22px, 5vw, 34px); font-weight: 700; line-height: 1.35; }
+  .section-title span { color: var(--clr-gold); }
+  .gold-line { width: 60px; height: 2px; background: linear-gradient(90deg, var(--clr-gold), transparent); margin: 16px 0 28px; }
+
+  /* ── HERO ── */
+  .hero { position: relative; background: var(--bg-dark); overflow: hidden; padding: 0; width: 100%; }
+  .hero-bg-pattern {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(122,31,53,0.35) 0%, transparent 70%),
+                      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,169,110,0.08) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; max-width: 680px; margin: 0 auto; padding: 60px 24px 52px; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(122,31,53,0.3); border: 1px solid rgba(176,64,96,0.4); color: #e8a0b0; font-size: 13px; padding: 7px 20px; border-radius: 100px; margin-bottom: 28px; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.05em; }
+  .hero-title { font-size: clamp(30px, 8vw, 52px); font-weight: 900; line-height: 1.2; margin-bottom: 20px; color: var(--title-on-dark); }
+  .hero-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,169,110,0.4), transparent); margin: 32px 0; }
+
+  .visual-badges-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+  .v-badge { background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); padding: 8px 16px; border-radius: 100px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--title-on-dark); font-weight: 500; }
+  .v-badge .v-icon { color: var(--clr-gold); font-size: 16px; }
+
+  /* ── BUTTONS ── */
+  .cta-btn { display: block; width: 100%; background: linear-gradient(135deg, #9e2a44 0%, #7a1f35 50%, #9e2a44 100%); color: var(--title-on-dark); font-family: var(--font-display); font-size: 18px; font-weight: 700; text-align: center; padding: 18px 32px; border-radius: var(--radius); border: 1px solid rgba(201,169,110,0.3); text-decoration: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 30px rgba(122,31,53,0.5); position: relative; overflow: hidden; }
+  .cta-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 50%); pointer-events: none; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(122,31,53,0.65); }
+  .cta-btn:active { transform: scale(0.98); }
+  .cta-sub { font-size: 13px; color: rgba(232, 220, 202, 0.7); text-align: center; margin-top: 10px; }
+
+  /* ── PRICE BOX & SCARCITY (Dark Only) ── */
+  .price-box { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 32px 28px; text-align: center; }
+  .price-tag { font-family: var(--font-display); font-size: clamp(38px, 10vw, 56px); font-weight: 900; color: var(--clr-gold); line-height: 1; margin-bottom: 6px; }
+  .price-label { font-size: 15px; color: var(--text-on-dark); opacity: 0.8; margin-bottom: 24px; }
+  
+  .offer-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(122,31,53,0.25); border: 1px solid rgba(176,64,96,0.35); color: #e8a0b0; font-size: 13px; font-weight: 600; padding: 5px 16px; border-radius: 100px; margin-bottom: 20px; }
+  .scarcity-bar { background: var(--surface-dark); border: 1px solid rgba(176,64,96,0.4); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; text-align: right;}
+  .scarcity-icon { font-size: 28px; flex-shrink: 0; }
+  .scarcity-text { font-size: 15px; color: var(--text-on-dark); line-height: 1.5; }
+  .scarcity-text strong { display: block; font-family: var(--font-display); font-size: 17px; color: var(--title-on-dark); margin-bottom: 2px; }
+
+  /* ── COMPARISON GRID ── */
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+  .comp-col { border-radius: var(--radius-lg); padding: 24px; border: 1px solid; position: relative; overflow: hidden; }
+  .comp-col.before { background: rgba(122, 31, 53, 0.08); border-color: rgba(176, 64, 96, 0.25); }
+  .comp-col.after { background: linear-gradient(135deg, rgba(201,169,110,0.12) 0%, rgba(201,169,110,0.03) 100%); border-color: rgba(201,169,110,0.3); }
+  .comp-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid; }
+  .comp-col.before .comp-header { border-color: rgba(176, 64, 96, 0.15); color: var(--clr-rose); }
+  .comp-col.after .comp-header { border-color: rgba(201, 169, 110, 0.15); color: var(--clr-gold); }
+  .comp-header h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 0; }
+  .comp-icon { font-size: 24px; }
+  .comp-list { list-style: none; padding: 0; margin: 0; }
+  .comp-list li { position: relative; padding-right: 28px; margin-bottom: 14px; font-size: 16px; line-height: 1.5; }
+  .comp-list li:last-child { margin-bottom: 0; }
+  .comp-col.before .comp-list li { opacity: 0.9; }
+  .comp-col.before .comp-list li::before { content: '✗'; position: absolute; right: 0; color: var(--clr-rose); font-weight: bold; font-size: 14px; top: 2px; }
+  .comp-col.after .comp-list li::before { content: '✓'; position: absolute; right: 0; color: var(--clr-gold); font-weight: bold; font-size: 16px; top: 0px; }
+  .comp-col.after .comp-list li { font-weight: 500; }
+  
+  /* Light Theme Overrides */
+  .section-light .comp-col.before { background: #fff5f7; border-color: #f7dadd; }
+  .section-light .comp-col.after { background: #fdfaf4; border-color: #f2e6cb; }
+  .section-light .comp-col.before .comp-header { color: var(--clr-rose); border-color: rgba(176,64,96,0.15); }
+  .section-light .comp-col.after .comp-header { color: var(--clr-gold-dark); border-color: rgba(201,169,110,0.2); }
+  .section-light .comp-list li { color: var(--text-on-light); }
+  .section-light .comp-col.after .comp-list li { font-weight: 600; color: var(--title-on-light); }
+
+  /* ── TRUTH GRID ── */
+  .truth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .truth-item { background: rgba(122, 31, 53, 0.08); border: 1px solid rgba(176, 64, 96, 0.2); border-radius: var(--radius); padding: 16px 12px; text-align: center; }
+  .truth-icon { font-size: 20px; margin-bottom: 8px; color: var(--clr-rose); }
+  .truth-text { font-size: 14px; line-height: 1.4; }
+  .truth-core { background: linear-gradient(135deg, rgba(201,169,110,0.1) 0%, rgba(13,10,11,0) 100%); border: 1px solid var(--border-dark); border-radius: var(--radius); padding: 20px; text-align: center; margin-bottom: 24px; }
+  .truth-core .t-icon { font-size: 28px; margin-bottom: 12px; }
+  .truth-core .t-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--clr-gold); margin-bottom: 6px; }
+  
+  /* Light Theme Overrides */
+  .section-light .truth-core { background: var(--surface-light); border-color: var(--border-light); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+  .section-light .truth-core .t-desc { color: var(--text-on-light); font-weight: 500; }
+  .section-light .truth-core .t-title { color: var(--clr-gold-dark); }
+  .section-light .truth-grid .truth-item { background: var(--surface-light); border-color: var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .section-light .truth-text { color: var(--text-on-light); font-weight: 500;}
+
+  /* ── QUESTIONS CLOUD & FEATURES GRID ── */
+  .questions-cloud { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 24px; }
+  .q-pill { background: rgba(122, 31, 53, 0.08); border: 1px dashed rgba(176, 64, 96, 0.4); color: var(--clr-rose); padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; }
+  .offer-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+  .o-feature-card { background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, rgba(201,169,110,0.02) 100%); border: 1px solid rgba(201, 169, 110, 0.15); border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: center; gap: 12px; text-align: right; }
+  .o-feature-icon { font-size: 18px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: rgba(201, 169, 110, 0.15); border-radius: 8px; flex-shrink: 0; }
+  .o-feature-text { font-size: 14px; color: var(--title-on-dark); font-weight: 600; line-height: 1.4; }
+
+  /* ── EMOTIONAL TIMELINE ── */
+  .journey-timeline { position: relative; margin: 32px 0 24px 0; padding-right: 24px; }
+  .journey-timeline::before { content: ''; position: absolute; top: 5px; bottom: 5px; right: 0; width: 2px; background: linear-gradient(to bottom, var(--clr-burgundy) 0%, var(--clr-gold) 100%); border-radius: 2px; }
+  .journey-item { position: relative; margin-bottom: 28px; padding-right: 16px; }
+  .journey-item:last-child { margin-bottom: 0; }
+  .journey-icon { position: absolute; top: 0; right: -13px; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-dark); border: 2px solid var(--clr-gold); display: flex; align-items: center; justify-content: center; font-size: 13px; z-index: 2; }
+  .journey-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .journey-desc { font-size: 15px; line-height: 1.6; }
+
+  /* Light Theme Overrides */
+  .section-light .journey-title { color: var(--title-on-light); }
+  .section-light .journey-desc { color: var(--text-on-light); font-weight: 500; }
+  .section-light .journey-icon { background: var(--surface-light); }
+  .section-light .journey-icon[style*="background"] { background: #fff5f7 !important; }
+
+  /* ── VISUAL ROUTINE CYCLE (Dark Only) ── */
+  .routine-cycle { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .cycle-card { background: rgba(201,169,110,0.03); border: 1px dashed rgba(201,169,110,0.2); padding: 16px; border-radius: var(--radius); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cycle-icon { font-size: 24px; opacity: 0.6; }
+  .cycle-text { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: rgba(253,251,247,0.7); }
+
+  /* ── EMOTIONAL CALLOUTS (Dark Only) ── */
+  .callout-wrapper { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; margin-bottom: 32px; }
+  .callout-card { background: var(--surface-dark); border: 1px solid rgba(201, 169, 110, 0.1); border-radius: var(--radius-lg); padding: 32px 20px; text-align: center; position: relative; box-shadow: inset 0 0 40px rgba(0,0,0,0.5); }
+  .callout-card::before { content: '"'; position: absolute; top: 10px; right: 20px; font-family: var(--font-display); font-size: 60px; color: rgba(201, 169, 110, 0.05); line-height: 1; }
+  .callout-text { font-family: var(--font-display); font-size: clamp(20px, 5vw, 24px); font-weight: 700; color: var(--title-on-dark); line-height: 1.5; }
+  .callout-card.strong { background: linear-gradient(135deg, var(--surface-dark) 0%, rgba(122, 31, 53, 0.15) 100%); border-color: rgba(176, 64, 96, 0.3); }
+  .callout-card.strong .callout-text { color: var(--clr-rose); }
+
+  /* ── IMPACT GRID ── */
+  .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .impact-card { background: var(--surface-dark); border: 1px solid rgba(176, 64, 96, 0.3); border-radius: var(--radius-lg); padding: 24px 20px; }
+  .impact-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--clr-rose); margin-bottom: 16px; text-align: center; border-bottom: 1px dashed rgba(176, 64, 96, 0.2); padding-bottom: 12px; }
+  .impact-list { list-style: none; padding: 0; margin: 0; }
+  .impact-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 12px; }
+  .impact-list li:last-child { margin-bottom: 0; }
+  .impact-list .i-icon { color: rgba(176, 64, 96, 0.6); font-size: 16px; }
+  
+  /* Light Theme Overrides */
+  .section-light .impact-card { background: var(--surface-light); border-color: var(--border-light); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+  .section-light .impact-list li { color: var(--text-on-light); font-weight: 500; }
+
+  /* ── INVESTMENT CARD (Replaced Bad Advice) ── */
+  .investment-container { text-align: center; margin: 40px 0; }
+  .investment-title { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--title-on-dark); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .investment-sub { font-size: 15px; color: var(--text-on-dark); opacity: 0.8; margin-bottom: 24px; }
+  .investment-card { display: flex; background: var(--surface-light); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+  .inv-col { flex: 1; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  
+  /* Lingerie Column */
+  .inv-col.bad { background: #fdfaf5; color: #4a3a3d; }
+  
+  /* Book Column */
+  .inv-col.good { background: linear-gradient(135deg, #fff5f7 0%, #fdfaf4 100%); border-right: 2px solid rgba(201,169,110,0.3); color: #4a3a3d; }
+  
+  .inv-icon { font-size: 40px; margin-bottom: 12px; }
+  .inv-col-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1c1114; }
+  .inv-col.good .inv-col-title { color: var(--clr-burgundy); }
+  .inv-price { font-size: 16px; font-weight: 600; margin-bottom: 24px; color: #8a7070; }
+  .inv-col.good .inv-price { color: var(--title-on-light); font-size: 22px; font-family: var(--font-display); font-weight: 900; }
+  
+  .inv-list { list-style: none; padding: 0; margin: 0; width: 100%; text-align: right; }
+  .inv-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; margin-bottom: 14px; line-height: 1.5; color: #4a3a3d; font-weight: 600; }
+  .inv-list li:last-child { margin-bottom: 0; }
+  .inv-x { color: var(--clr-rose); font-size: 16px; margin-top: 0px; flex-shrink: 0; font-weight: bold; }
+  .inv-check { color: #27ae60; font-size: 18px; margin-top: -2px; flex-shrink: 0; font-weight: bold; }
+  
+  .investment-footer-text { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: #e8a0b0; margin-bottom: 20px; }
+
+  /* ── VISUAL STEPS (MINI CARDS & LADDER) (Dark Only) ── */
+  .mini-icon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 10px; margin-top: 16px; }
+  .m-card { background: rgba(201,169,110,0.05); border: 1px solid rgba(201,169,110,0.15); border-radius: 12px; padding: 12px 8px; text-align: center; }
+  .m-icon { font-size: 24px; margin-bottom: 8px; }
+  .m-text { font-size: 13px; color: var(--title-on-dark); font-weight: 500; }
+  
+  .step-ladder { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .ladder-step { display: flex; align-items: center; gap: 16px; background: var(--surface-dark); padding: 14px 16px; border-radius: 12px; border-right: 4px solid var(--clr-gold); border: 1px solid var(--border-dark); border-right-width: 4px; }
+  .ladder-num { font-family: var(--font-display); font-size: 20px; font-weight: 900; color: rgba(201,169,110,0.4); }
+  .ladder-text { font-size: 15px; color: var(--title-on-dark); font-weight: 600; flex: 1; }
+  .ladder-icon { opacity: 0.5; font-size: 18px; }
+
+  /* ── MENU CARDS ── */
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .menu-card { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: var(--radius); padding: 20px 18px; text-align: center; transition: border-color 0.2s, background 0.2s; }
+  .menu-card-icon { font-size: 26px; margin-bottom: 10px; }
+  .menu-card-name { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .menu-card-desc { font-size: 13px; line-height: 1.5; }
+  
+  /* Light Theme Overrides */
+  .section-light .menu-card { background: var(--surface-light); border-color: var(--border-light); box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
+  .section-light .menu-card-name { color: var(--title-on-light); }
+  .section-light .menu-card-desc { color: var(--text-on-light); font-weight: 500; }
+
+  /* ── BONUS CARD (Dark Only) ── */
+  .bonus-card { background: linear-gradient(135deg, var(--surface-dark) 0%, rgba(122,31,53,0.12) 100%); border: 1px solid rgba(176,64,96,0.3); border-radius: var(--radius); padding: 24px 22px; margin-bottom: 14px; position: relative; overflow: hidden; }
+  .bonus-label { font-size: 11px; letter-spacing: 0.12em; color: var(--clr-gold-dark); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+  .bonus-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--title-on-dark); margin-bottom: 10px; }
+  
+  /* ── VISUAL PRICE COMPARE (Dark Only) ── */
+  .visual-compare { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .v-comp-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--surface-dark); border-radius: var(--radius); border: 1px dashed rgba(201,169,110,0.3); }
+  .v-comp-row .v-comp-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: rgba(232, 220, 202, 0.6); }
+  .v-comp-row .v-comp-icon { font-size: 20px; opacity: 0.7; }
+  .v-comp-row .v-comp-price { color: var(--text-on-dark); font-weight: 500; font-size: 15px; }
+  .v-comp-row.highlight-row { background: linear-gradient(135deg, rgba(201,169,110,0.1) 0%, rgba(122,31,53,0.2) 100%); border: 2px solid var(--clr-gold); box-shadow: 0 4px 24px rgba(201,169,110,0.15); transform: scale(1.03); margin-top: 12px; padding: 20px; }
+  .v-comp-row.highlight-row .v-comp-item { color: var(--clr-gold); font-size: 18px; font-weight: 700; font-family: var(--font-display); }
+  .v-comp-row.highlight-row .v-comp-icon { opacity: 1; font-size: 24px; }
+  .v-comp-row.highlight-row .v-comp-price { color: var(--title-on-dark); font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  
+  /* ── ALERT BOXES ── */
+  .alert-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .alert-box { display: flex; gap: 16px; padding: 20px; border-radius: var(--radius-lg); align-items: flex-start; }
+  .alert-icon { font-size: 28px; line-height: 1; }
+  .alert-content h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 6px; }
+  .alert-content p { font-size: 14px; margin: 0; line-height: 1.5; }
+  
+  /* Light Theme Overrides */
+  .section-light .alert-box.danger { background: #fff5f7; border: 1px solid #f7dadd; }
+  .section-light .alert-box.success { background: #fdfaf4; border: 1px solid #f2e6cb; }
+  .section-light .alert-box.danger h4 { color: var(--clr-rose); }
+  .section-light .alert-box.success h4 { color: var(--clr-gold-dark); }
+  .section-light .alert-content p { color: var(--text-on-light); font-weight: 500; }
+
+  /* ── RESULTS GRID (Light Only in this layout) ── */
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .result-card { border-radius: var(--radius); padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .result-card .r-icon { font-size: 24px; color: var(--clr-gold); }
+  .result-card .r-text { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
+  .result-card .r-sub { font-size: 13px; }
+  
+  .section-light .result-card { background: var(--surface-light); border: 1px solid var(--border-light); box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
+  .section-light .result-card .r-text { color: var(--title-on-light); }
+  .section-light .result-card .r-sub { color: var(--text-on-light); font-weight: 500;}
+
+  /* ── CHECK LIST ── */
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; margin-bottom: 12px; line-height: 1.6; }
+  .check-list li .icon-yes { color: var(--clr-gold); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .check-list li .icon-no { color: var(--clr-rose); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  
+  .section-dark .check-list li { color: var(--text-on-dark); }
+  .section-light .check-list li { color: var(--text-on-light); font-weight: 500;}
+  
+  .highlight-box { border-radius: var(--radius-lg); border: 1px solid var(--border-dark); }
+  .section-dark .highlight-box { background: var(--surface-dark); }
+  .section-dark .highlight-box.burgundy-glow { background: rgba(122,31,53,0.1); border-color: rgba(176,64,96,0.3); }
+
+  /* ── FADE-IN ANIMATION ── */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── FOOTER & STICKY ── */
+  footer { background: var(--bg-dark); text-align: center; padding: 40px 20px 80px; font-size: 13px; color: rgba(232,220,202,0.6); line-height: 1.8; }
+  footer .footer-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--clr-gold); margin-bottom: 10px; }
+  
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(18,10,12,0.96); backdrop-filter: blur(12px); border-top: 1px solid rgba(201,169,110,0.2); padding: 14px 20px; z-index: 999; display: none; }
+  .sticky-cta-inner { max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+  .sticky-cta-text { font-family: var(--font-display); font-size: 14px; color: rgba(232,220,202,0.6); line-height: 1.3; flex: 1; }
+  .sticky-cta-text strong { display: block; color: var(--title-on-dark); font-size: 15px; }
+  .sticky-btn { background: linear-gradient(135deg, #9e2a44, #7a1f35); color: var(--title-on-dark); font-family: var(--font-display); font-size: 14px; font-weight: 700; padding: 12px 20px; border-radius: var(--radius); border: 1px solid rgba(201,169,110,0.3); cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; flex-shrink: 0; box-shadow: 0 2px 20px rgba(122,31,53,0.5); }
+
+  /* ── FAQ ── */
+  .faq-item { border-bottom: 1px solid; overflow: hidden; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; background: none; border: none; text-align: right; direction: rtl; padding: 20px 0; font-family: var(--font-display); font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: color 0.2s; }
+  .faq-arrow { min-width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; transition: transform 0.3s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; font-size: 15px; line-height: 1.8; }
+  .faq-a-inner { padding-bottom: 20px; }
+  .faq-item.open .faq-a { max-height: 400px; }
+  
+  /* Light Theme Overrides */
+  .section-light .faq-item { border-bottom-color: var(--border-light); }
+  .section-light .faq-q { color: var(--title-on-light); }
+  .section-light .faq-q:hover { color: var(--clr-gold-dark); }
+  .section-light .faq-a { color: var(--text-on-light); font-weight: 500; }
+  .section-light .faq-arrow { background: rgba(201,169,110,0.15); color: var(--clr-gold-dark); }
+
+  /* ── NEW: HERO GRID & MOCKUP ── */
+  .hero-grid { display: flex; align-items: center; gap: 40px; max-width: 1100px; margin: 0 auto; padding: 60px 24px 52px; }
+  .hero-content { flex: 1.2; text-align: right; }
+  .hero-visual { flex: 1; display: flex; justify-content: center; position: relative; }
+  .book-mockup { width: 100%; max-width: 320px; aspect-ratio: 3/4; background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(122,31,53,0.25)); border: 2px dashed rgba(201,169,110,0.5); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--clr-gold); font-family: var(--font-display); font-weight: 700; font-size: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .book-mockup .icon { font-size: 48px; margin-bottom: 16px; opacity: 0.8; }
+  
+  /* ── NEW: SAMPLES & LIGHTBOX ── */
+  .samples-container { display: flex; flex-direction: column; gap: 32px; align-items: center; margin-top: 24px; }
+  .sample-card { width: 100%; max-width: 500px; background: var(--surface-light); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 16px; cursor: zoom-in; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  .sample-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border-color: rgba(201,169,110,0.4); }
+  .sample-title { text-align: center; font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--title-on-light); margin-bottom: 16px; }
+  .sample-img-box { width: 100%; aspect-ratio: 3/4; background: #fdfaf5; border: 1px dashed rgba(201,169,110,0.4); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-on-light); overflow: hidden; position: relative; }
+  .sample-img-box img { width: 100%; height: 100%; object-fit: cover; display: none; }
+  
+  .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 10, 12, 0.95); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s; }
+  .lightbox.show { display: flex; opacity: 1; }
+  .lightbox-content { max-width: 100%; max-height: 90vh; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: none; }
+  .lightbox-placeholder { width: 100%; max-width: 500px; aspect-ratio: 3/4; background: #fdfaf5; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-on-light); font-family: var(--font-display); font-size: 20px; font-weight: bold; }
+  .lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--clr-cream); font-size: 50px; cursor: pointer; line-height: 1; z-index: 10000;}
+
+  @media (max-width: 768px) {
+    .hero-grid { flex-direction: column; text-align: center; }
+    .hero-content { text-align: center; }
+    .hero-content .hero-badge { margin: 0 auto 28px; }
+    .hero-content .cta-btn { margin: 0 auto 14px; }
+    .hero-visual { width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .menu-grid { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 12px; }
+    .truth-grid { grid-template-columns: 1fr; gap: 8px; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr; }
+    .routine-cycle { grid-template-columns: 1fr; }
+    .offer-features-grid { grid-template-columns: 1fr; }
+    
+    .investment-card { flex-direction: column; }
+    .inv-col.good { border-right: none; border-top: 2px solid rgba(201,169,110,0.3); }
+  }
+  @media (min-width: 480px) { .sticky-cta { display: block; } }
+  @media (max-width: 479px) { .sticky-cta { display: block; } }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PIXEL_ID');
+fbq('track', 'PageView');
+fbq('trackCustom', 'ViewContent');
+</script>
+<!-- End Meta Pixel Code -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MEASUREMENT_ID');
+</script>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║            HERO SECTION            ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="hero full-w">
+  <div class="hero-bg-pattern"></div>
+  
+  <!-- تم تحويل الـ Hero لشبكة (Grid) تسمح بوجود صورة الكتاب على الجنب -->
+  <div class="hero-grid">
+    
+    <!-- الجانب الأيمن: النصوص والأزرار -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-lock">🔒</span>
+        <span>+18 للمتزوجات فقط</span>
+      </div>
+
+      <h1 class="hero-title">الأنثى اللي لا&nbsp;تُنسى</h1>
+
+      <p style="font-size: clamp(16px, 4vw, 19px); color: var(--text-on-dark); margin: 0 auto 24px; font-weight: 500; line-height: 1.7; max-width: 560px;">
+        منيو ليالي جريء يكسر روتين العلاقة الحميمة ويرجع اللهفة، المداعبة، والجرأة بينك وبين جوزك جوه البيت
+      </p>
+
+      <div class="hero-divider"></div>
+
+      <a href="#buy" class="cta-btn" style="max-width:460px;">
+        احصلي على الكتاب دلوقتي — 450 جنيه فقط
+      </a>
+      <p class="cta-sub">PDF يوصلك فورًا</p>
+
+      <div class="visual-badges-grid">
+        <div class="v-badge"><span class="v-icon">📖</span> كتاب رقمي</div>
+        <div class="v-badge"><span class="v-icon">🔒</span> خصوصية في الاستلام</div>
+        <div class="v-badge"><span class="v-icon">🎁</span> 3 مكافآت</div>
+        <div class="v-badge"><span class="v-icon">⭐</span> جاهز للتطبيق</div>
+      </div>
+    </div>
+
+    <!-- الجانب الأيسر: مكان صورة غلاف الكتاب -->
+    <div class="hero-visual">
+      <div class="book-mockup">
+        <div class="icon">📖</div>
+        <div>مكان صورة غلاف الكتاب</div>
+        <div style="font-size: 13px; font-weight: 400; opacity: 0.7; margin-top: 8px;">(استبدلي هذا المربع بالصورة)</div>
+        
+        <!-- 💡 ملاحظة للتعديل:
+        عندما تتوافر الصورة الحقيقية، قومي بحذف الـ div.book-mockup بالكامل وضعي هذا الكود بدلاً منه:
+        <img src="رابط_صورة_الغلاف_هنا.png" alt="غلاف الكتاب" style="width: 100%; max-width: 340px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+        -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║          PAIN — OPENING          ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <div class="truth-core" style="background:transparent; border:none; padding:0; margin-bottom: 32px; box-shadow: none;">
+      <div class="t-title" style="font-size: 26px; color: var(--title-on-light);">العلاقة الحميمة مش بتبرد فجأة..</div>
+      <div class="t-desc" style="color:var(--clr-rose); font-size: 20px; font-weight: bold;">هي بتبرد لما تبقى محفوظة.</div>
+    </div>
+
+    <div class="comparison-grid">
+      <div class="comp-col before">
+        <div class="comp-header"><span class="comp-icon">🔄</span><h3>قبل الكتاب</h3></div>
+        <ul class="comp-list">
+          <li>نفس البداية</li>
+          <li>نفس السرعة</li>
+          <li>نفس السكوت</li>
+          <li>نفس النهاية</li>
+        </ul>
+      </div>
+
+      <div class="comp-col after">
+        <div class="comp-header"><span class="comp-icon">✨</span><h3>بعد الكتاب</h3></div>
+        <ul class="comp-list">
+          <li>بداية أنتِ اخترتيها</li>
+          <li>إيقاع فيه بناء</li>
+          <li>كلام بدرجات</li>
+          <li>ترقّب للمرة الجاية</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="truth-grid">
+      <div class="truth-item"><div class="truth-icon">✗</div><div class="truth-text">المشكلة مش إنك مش بتحبيه</div></div>
+      <div class="truth-item"><div class="truth-icon">✗</div><div class="truth-text">ولا إنك مش عايزاه</div></div>
+      <div class="truth-item"><div class="truth-icon">✗</div><div class="truth-text">ولا إنك فقدتي أنوثتك</div></div>
+    </div>
+
+    <div class="truth-core">
+      <div class="t-icon">🔄</div>
+      <div class="t-title">المشكلة إن العلاقة دخلت سيناريو محفوظ</div>
+      <div class="t-desc">والسيناريو المحفوظ بيقتل الترقب والدهشة.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║          EARLY OFFER BOX         ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section id="buy" class="section-dark fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">العرض الحالي</div>
+
+    <div class="price-box">
+      <div class="offer-pill">⏳ عرض محدود</div>
+      <h2 class="section-title" style="margin-bottom:12px;">احصلي على كتاب <span>"الأنثى اللي لا تُنسى"</span></h2>
+      <div class="gold-line" style="margin:16px auto;"></div>
+
+      <p style="color:var(--text-on-dark); opacity:0.9; font-size:16px; margin-bottom:16px; text-align:center;">بدل التوهان في الأسئلة دي:</p>
+
+      <div class="questions-cloud">
+        <span class="q-pill">أعمل إيه مختلف؟</span>
+        <span class="q-pill">أبدأ إزاي؟</span>
+        <span class="q-pill">أقوله إيه؟</span>
+        <span class="q-pill">أكسر الخجل منين؟</span>
+      </div>
+
+      <p style="color:var(--text-on-dark); opacity:0.9; font-size:16px; margin-bottom:16px; text-align:center;">هتفتحي الكتاب وتختاري ليلة. هتاخدي:</p>
+
+      <div class="offer-features-grid">
+        <div class="o-feature-card"><div class="o-feature-icon">📱</div><div class="o-feature-text">الكتاب الرقمي الكامل</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🌙</div><div class="o-feature-text">منيو ليالي جاهز للتطبيق</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">💬</div><div class="o-feature-text">بدايات وجمل بدرجات</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🏠</div><div class="o-feature-text">أفكار تجديد جوه البيت</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🎯</div><div class="o-feature-text">طريقة عملية لأول ليلة</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🔒</div><div class="o-feature-text">خصوصية تامة في الاستلام</div></div>
+      </div>
+
+      <div class="scarcity-bar" style="margin-bottom:20px;">
+        <div class="scarcity-icon">🎁</div>
+        <div class="scarcity-text">
+          <strong>لأول 100 مشتركة:</strong>
+          3 مكافآت مجانية (ملخص الإيقاع + ملحق طوارئ الفتور + خطة أول ليلة)
+        </div>
+      </div>
+
+      <div class="price-tag">450</div>
+      <div class="price-label">جنيه مصري — سعر الإطلاق</div>
+
+      <a href="checkout.html" class="cta-btn" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب دلوقتي</a>
+      
+      <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:16px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
+          <span style="color:#ff4d6d; animation: blink 1.2s infinite;">●</span>
+          للحفاظ على سرية وسرعة التسليم:
+        </div>
+        لأننا نراجع إيصالات التحويل يدوياً لضمان الخصوصية، ولضمان إرسال الـ PDF والمكافآت فوراً على الواتساب بمجرد تأكيد الدفع (450 جنيه)، <strong>فريقنا بيستقبل 50 طلب فقط يومياً.</strong><br>
+        <div style="margin-top:6px; font-weight:700; color:#ff4d6d;">⏳ الأماكن المتاحة المتبقية اليوم: 4 أماكن فقط.</div>
+      </div>
+      <style>@keyframes blink { 0% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }</style>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║        WHERE ARE YOU NOW?        ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">إنتِ فين دلوقتي؟</div>
+    <h2 class="section-title">متزوجة من سنين.<br><span>والعلاقة بدأت تدخل نفس السكة.</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="journey-timeline">
+      <div class="journey-item fade-up"><div class="journey-icon">💍</div><div class="journey-title">متزوجة من سنين</div><div class="journey-desc">الحب موجود، بس الحب لوحده مش بيكسر الملل.</div></div>
+      <div class="journey-item fade-up" style="transition-delay: 0.1s"><div class="journey-icon">⚖️</div><div class="journey-title">ضغط ومسؤوليات</div><div class="journey-desc">هل البيت، العيال، والمسؤوليات "طفوا" الأنوثة اللي جواكي؟</div></div>
+      <div class="journey-item fade-up" style="transition-delay: 0.2s"><div class="journey-icon">🔄</div><div class="journey-title">نفس الروتين</div><div class="journey-desc">نفس الدخول، نفس المداعبة السريعة، نفس النهاية.</div></div>
+      <div class="journey-item fade-up" style="transition-delay: 0.3s"><div class="journey-icon">😶</div><div class="journey-title">الخرس الزوجي</div><div class="journey-desc">هل بقت العلاقة "واجب" تقيل، والروتين هو اللي سايق؟ مفيش كلام جديد.</div></div>
+      <div class="journey-item fade-up" style="transition-delay: 0.4s"><div class="journey-icon" style="border-color: var(--clr-rose); background: #fff5f7 !important;">❓</div><div class="journey-title" style="color: var(--clr-rose);">أسئلة من جوه</div><div class="journey-desc">"ليه بقيت مسؤولة أكتر من كوني أنثى؟"</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║        THE REAL PROBLEM          ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-dark fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">المشكلة الحقيقية</div>
+    <h2 class="section-title">مش <span>"ليلة وحشة"</span><br>المشكلة إن نفس الليلة بتتكرر</h2>
+    <div class="gold-line"></div>
+
+    <div class="routine-cycle">
+      <div class="cycle-card"><div class="cycle-icon">🏁</div><div class="cycle-text">نفس البداية<br><span style="font-size:12px; font-weight:normal;">(مفيش ترقب)</span></div></div>
+      <div class="cycle-card"><div class="cycle-icon">🏠</div><div class="cycle-text">نفس المكان<br><span style="font-size:12px; font-weight:normal;">(مفيش مفاجأة)</span></div></div>
+      <div class="cycle-card"><div class="cycle-icon">⏱️</div><div class="cycle-text">نفس السرعة<br><span style="font-size:12px; font-weight:normal;">(مفيش بناء)</span></div></div>
+      <div class="cycle-card"><div class="cycle-icon">😶</div><div class="cycle-text">نفس السكوت<br><span style="font-size:12px; font-weight:normal;">(مفيش مشاركة)</span></div></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 32px; margin-bottom: 16px;">
+      <span style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--clr-gold);">وهنا تبدأي تسألي نفسك:</span>
+    </div>
+
+    <div class="callout-wrapper">
+      <div class="callout-card fade-up"><div class="callout-text">"هو اتعود عليا؟"</div></div>
+      <div class="callout-card fade-up" style="transition-delay: 0.1s"><div class="callout-text">"هو مستعجل ليه؟"</div></div>
+      <div class="callout-card fade-up" style="transition-delay: 0.2s"><div class="callout-text">"ليه أنا ساكتة ومش عارفة أطلب؟"</div></div>
+      <div class="callout-card strong fade-up" style="transition-delay: 0.3s"><div class="callout-text">"ليه بقيت أم ومسؤولة أكتر من كوني أنثى مرغوبة؟"</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║        SNOWBALL EFFECT           ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <h2 class="section-title">لو فضل الروتين والملل مسيطر كدة سنة كمان...<br><span style="font-size: clamp(18px, 4vw, 24px);">تفتكري شكل حياتكم ونفسيتكم هيبقوا إيه؟</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-title">إنتِ بتبقي:</div>
+        <ul class="impact-list">
+          <li><span class="i-icon">▾</span> أقل مبادرة ودلال.</li>
+          <li><span class="i-icon">▾</span> أقل ثقة ورغبة في الكلام.</li>
+          <li><span class="i-icon">▾</span> شايفة نفسك "مسؤولة" مش أنثى.</li>
+        </ul>
+      </div>
+      
+      <div class="impact-card">
+        <div class="impact-title">وهو بيتعود:</div>
+        <ul class="impact-list">
+          <li><span class="i-icon">▾</span> إنك ساكتة ومابتطلبيش.</li>
+          <li><span class="i-icon">▾</span> إن البداية واحدة والنهاية سريعة.</li>
+          <li><span class="i-icon">▾</span> بيفقد الترقب لأن مفيش جديد.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="truth-core" style="margin-bottom:0;">
+      <div class="t-icon">❄️</div>
+      <div class="t-title">الفتور مش بيبدأ بانفصال</div>
+      <div class="t-desc">الفتور يبدأ لما كل ليلة تبقى نسخة من اللي قبلها، والسكوت يطول.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║       YOU NEED A PLAN            ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-dark fade-up">
+  <div class="container">
+    <h2 class="section-title">اللي محتاجاه مش نصيحة<br><span>اللي محتاجاه خطة</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="advice-compare">
+      <div class="advice-row bad">
+        <div class="advice-icon">🚫</div>
+        <div class="advice-text">
+          <h4>النصيحة العادية: "روقي واتكلمي معاه"</h4>
+          <p>عارفة إن الكلام مهم، بس المشكلة إنك مش عارفة تبدأي منين.</p>
+        </div>
+      </div>
+      <div class="advice-row good">
+        <div class="advice-icon">✅</div>
+        <div class="advice-text">
+          <h4>ده مش مجرد كتاب.. ده "كتالوج"</h4>
+          <p>خطوات عملية لاستخدام (الصوت، نظرة العين، اللمس، وكل تفصيلة فيكي) كأدوات تأثير ساحرة.. هتعرفي إزاي "تسيطري" بنعومة.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <h3 style="color:var(--clr-gold); font-size: 20px; margin-bottom: 12px;">١. جهزي الجو:</h3>
+      <div class="mini-icon-grid">
+        <div class="m-card"><div class="m-icon">💡</div><div class="m-text">إضاءة</div></div>
+        <div class="m-card"><div class="m-icon">🕯️</div><div class="m-text">رائحة</div></div>
+        <div class="m-card"><div class="m-icon">🛋️</div><div class="m-text">مكان</div></div>
+        <div class="m-card"><div class="m-icon">🎵</div><div class="m-text">موسيقى</div></div>
+        <div class="m-card"><div class="m-icon">💌</div><div class="m-text">رسالة</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <h3 style="color:var(--clr-gold); font-size: 20px; margin-bottom: 12px;">٢. ابدئي بدرجتك:</h3>
+      <div class="step-ladder">
+        <div class="ladder-step"><div class="ladder-num">١</div><div class="ladder-text">لو خجولة ⬅️ ابدئي بتلميح بسيط</div><div class="ladder-icon">👀</div></div>
+        <div class="ladder-step"><div class="ladder-num">٢</div><div class="ladder-text">لو الكلام بيقف ⬅️ ابدئي بفعل ولمسة</div><div class="ladder-icon">✨</div></div>
+        <div class="ladder-step"><div class="ladder-num">٣</div><div class="ladder-text">لو بينكم أمان ⬅️ استخدمي جملة واضحة</div><div class="ladder-icon">💬</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║       THE BOOK INSIDE            ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">أمثلة من منيو الليالي</div>
+    <h2 class="section-title"><span>"الأنثى اللي لا تُنسى"</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="truth-core" style="background: var(--surface-light); border-color: rgba(201,169,110,0.2); padding: 16px;">
+      <p style="font-size: 16px; margin: 0; font-weight: 500;">
+        <span style="font-size:20px; display:block; margin-bottom:8px;">📖 ❌ 🍽️ ✅</span>
+        الكتاب مش رواية طويلة.. <strong style="color:var(--clr-gold-dark);">هو منيو ليالي.</strong>
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-icon">🌅</div><div class="menu-card-name">ليلة 3: دلع الصبحية</div><div class="menu-card-desc">سيناريو عملي يبدأ يومك بنظرة مختلفة، وتكسروا روتين الليل.</div></div>
+      <div class="menu-card"><div class="menu-card-icon">⚡</div><div class="menu-card-name">ليلة الموجة والكهرباء</div><div class="menu-card-desc">تكتيكات الأنوثة واللمس البطيء اللي تخليه ملهوف عليكي.</div></div>
+      <div class="menu-card"><div class="menu-card-icon">🎲</div><div class="menu-card-name">ليلة الرهان</div><div class="menu-card-desc">تحدي ولعب يكسر الملل ويرجع الشغف والمشاركة بينكم.</div></div>
+      <div class="menu-card"><div class="menu-card-icon">🔥</div><div class="menu-card-name">ليلة 10: الضغط الشرياني</div><div class="menu-card-desc">جرأة باحترافية لرفع وتيرة الحماس لمستويات جديدة.</div></div>
+    </div>
+
+    <!-- ── NEW: قسم عينات الكتاب ── -->
+    <div style="margin-top: 64px; text-align: center;">
+      <div class="tag-pill" style="margin-bottom:20px;">نظرة من الداخل</div>
+      <h2 class="section-title">عينة من <span>الكتاب</span></h2>
+      <div class="gold-line" style="margin: 16px auto 24px;"></div>
+      
+      <div class="samples-container">
+        
+        <!-- العينة الأولى -->
+        <!-- 💡 ملاحظة للتعديل: ضعي رابط الصورة داخل دالة openLightbox('') بين علامتي التنصيص -->
+        <div class="sample-card" onclick="openLightbox('')">
+          <div class="sample-title">ليلة 3: دلع الصبحية</div>
+          <div class="sample-img-box">
+            <img src="" alt="عينة ليلة 3"> <!-- ضعي الرابط هنا أيضاً -->
+            <span>📸 اضغطي لإضافة/رؤية صورة العينة 1</span>
+          </div>
+        </div>
+
+        <!-- العينة الثانية -->
+        <!-- 💡 ملاحظة للتعديل: ضعي رابط الصورة داخل دالة openLightbox('') بين علامتي التنصيص -->
+        <div class="sample-card" onclick="openLightbox('')">
+          <div class="sample-title">ليلة 10: ليلة الضغط الشرياني</div>
+          <div class="sample-img-box">
+            <img src="" alt="عينة ليلة 10"> <!-- ضعي الرابط هنا أيضاً -->
+            <span>📸 اضغطي لإضافة/رؤية صورة العينة 2</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <p style="text-align:center; margin-top:24px; color: var(--text-on-light); font-weight: 600; font-size: 15px;">
+        دول مثال على ليلتين من 60 ليلة ولا ألف ليلة وليلة، ولسه جوة الكتاب أفكار أكتر بكتير.. انسوا الملل في حياتكم تاني.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║        PRICE & BONUSES           ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-dark fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">المكافآت المجانية</div>
+    <h2 class="section-title">قيمة <span>أكبر بكثير</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="bonus-card">
+      <div class="bonus-label">مكافأة ١</div>
+      <div class="bonus-title">ملخص كتاب "الدليل لرعشات لا تتوقف"</div>
+      <ul class="impact-list" style="margin-top:12px;">
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> أساسيات هتغير مفهوم العلاقة (زي الفرق بين الرعشة والقذف حتى عند الرجالة).</li>
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> الأوضاع بتريكاتها، مهارات المحترفة، وإمتى نستخدم كل وضعية.</li>
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> الهدف النفسي لكل وضعية معينة.</li>
+      </ul>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-label">مكافأة ٢</div>
+      <div class="bonus-title">ملحق "الطوارئ"</div>
+      <ul class="impact-list" style="margin-top:12px;">
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> هترجعيله وقت الفتور، الضغط، الملل، أو لما تحسي إن الشرارة بدأت تهدى.</li>
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> حلول سريعة، تمارين عملية، أدوات إنقاذ، وتكنيكات ترجع الشغف في أصعب الظروف.</li>
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> بمعنى أوضح.. ده <strong style="color:var(--clr-cream);">صندوق الإسعافات الأولية لعلاقتكم</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-label">مكافأة ٣</div>
+      <div class="bonus-title">"أول ليلة بدون صدمة"</div>
+      <ul class="impact-list" style="margin-top:12px;">
+        <li><span class="i-icon" style="color:var(--clr-gold);">✦</span> خطوات لإدخال التجديد بهدوء وبدون توتر.</li>
+      </ul>
+    </div>
+
+    <div style="height: 16px;"></div>
+    
+    <!-- ── كارت الاستثمار (الجديد) ── -->
+    <div class="investment-container">
+      <h3 class="investment-title">استثمار السعادة الحقيقي 💎</h3>
+      <p class="investment-sub">مقارنة بسيطة للقيمة اللي هتحصلي عليها مقابل ما تدفعينه.</p>
+
+      <div class="investment-card">
+        <!-- الجانب الأيمن: اللانجري (الخيار المكلف والمؤقت) -->
+        <div class="inv-col bad">
+          <div class="inv-icon">👗</div>
+          <h4 class="inv-col-title">شراء قطعة لانجري جديدة</h4>
+          <div class="inv-price">التكلفة: 400+ جنيه</div>
+          <ul class="inv-list">
+            <li><span class="inv-x">❌</span> شكل حلو للحظات سريعة.</li>
+            <li><span class="inv-x">❌</span> تأثيرها يدوم لليلة واحدة أو أقل.</li>
+            <li><span class="inv-x">❌</span> سرعان ما تصبح قطعة عادية في الدولاب.</li>
+          </ul>
+        </div>
+        
+        <!-- الجانب الأيسر: الكتاب (الاستثمار الحقيقي) -->
+        <div class="inv-col good">
+          <div class="inv-icon">📖</div>
+          <h4 class="inv-col-title">كتاب "الأنثى اللي لا تُنسى"</h4>
+          <div class="inv-price">فقط 450 جنيه</div>
+          <ul class="inv-list">
+            <li><span class="inv-check">✅</span> <strong style="color:var(--clr-burgundy);">60 ليلة جاهزة للتنفيذ. (الليلة بـ 8 جنيه!)</strong></li>
+            <li><span class="inv-check">✅</span> مهارات وتكتيكات تفضل معاكي العمر.</li>
+            <li><span class="inv-check">✅</span> تغيير حقيقي ومستمر في شكل العلاقة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="investment-footer-text">
+        مش بتشتري PDF.. إنتِ بتشتري طريقة ترجع لعلاقتكم اللهفة!
+      </div>
+      <a href="#final-cta" class="cta-btn" style="max-width: 400px; margin: 0 auto; font-size: 19px; padding: 20px;">
+        اطلبي الكتاب الآن بـ 450 جنيه 🛒
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║         BEFORE YOU BUY           ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">الشفافية أولاً</div>
+    <h2 class="section-title">كوني <span>واضحة مع نفسك</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="alert-grid">
+      <div class="alert-box danger">
+        <div class="alert-icon">🚫</div>
+        <div class="alert-content">
+          <h4>الكتاب مش هيحل:</h4>
+          <p>ألم جسدي، نفور شديد، عنف، خيانة، أو أزمة كبيرة محتاجة مختص.</p>
+        </div>
+      </div>
+      <div class="alert-box success">
+        <div class="alert-icon">✅</div>
+        <div class="alert-content">
+          <h4>الكتاب هيعالج:</h4>
+          <p>الملل، السكوت، قصر المداعبة، والروتين اللي قتل الترقب بينكم.</p>
+        </div>
+      </div>
+      <div class="alert-box" style="background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.3);">
+        <div class="alert-icon">💳</div>
+        <div class="alert-content">
+          <h4 style="color: var(--title-on-light);">أمان وسرية الفاتورة</h4>
+          <p>اطمني، أي عملية شراء بتظهر في كشف حسابك البنكي أو الرسائل كمنتج من <strong>(Happy Home)</strong>، اسم بريء تماماً لضمان سرية خصوصيتك.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║              FAQ                 ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">الأسئلة الشائعة</div>
+    <h2 class="section-title">أسئلة <span>هتيجي في بالك</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="highlight-box" style="padding:8px 20px; background: transparent; border: none; box-shadow: none;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ليه الكتاب إلكتروني (PDF) مش ورقي؟ <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">أولاً للخصوصية عشان مفيش غلاف يثير الشكوك في البيت. ثانياً لسهولة الوصول ليه ع الموبايل في أي وقت لأنك مش بتقريه كله مرة واحدة، إنتي كل ليلة بتقري سيناريو من 4 لـ 7 صفحات بس وتنفذي.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          إزاي هستلم الكتاب؟ <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">فور الدفع، بيوصلك الكتاب فوراً على الإيميل، وكمان بتوصلك نسخة إضافية على الواتساب الخاص بيكي خلال 24 ساعة.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          هل الكتاب جريء؟ <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">أيوه. محتوى جريء في تأثيره، راقٍ ومحترم جداً في لغته لتجديد العلاقة بين الزوجين.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          هل الشراء خاص ومين هيشوف الفاتورة؟ <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">أيوه. بيوصلك بخصوصية كاملة، وحتى الدفع بيظهر في البنك باسم (Happy Home) لضمان السرية.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║      MICRO-COMMITMENT QUIZ       ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light fade-up" style="background:#fdfaf5;">
+  <div class="container" style="max-width:600px;">
+    <h2 class="section-title" style="text-align:center;font-size:22px;margin-bottom:12px;">هل علاقتكم دخلت مرحلة الخطر؟</h2>
+    <p style="text-align:center;color:var(--clr-muted);margin-bottom:30px;font-size:15px;font-weight:700;">(اختبار سريع من 3 أسئلة)</p>
+
+    <div id="quiz-container">
+      <!-- Q1 -->
+      <div class="quiz-step" id="q1">
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--title-on-light);margin-bottom:16px;">1. متى كانت آخر مرة فاجأكِ فيها زوجك أو فاجأتيه في العلاقة؟</h3>
+        <button class="quiz-btn" onclick="nextQuiz(1)">من زمان جداً</button>
+        <button class="quiz-btn" onclick="nextQuiz(1)">قريباً</button>
+        <button class="quiz-btn" onclick="nextQuiz(1)">مش فاكرة</button>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-step" id="q2" style="display:none;">
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--title-on-light);margin-bottom:16px;">2. هل بتحسي إن العلاقة بقت 'سيناريو محفوظ' بيخلص بسرعة؟</h3>
+        <button class="quiz-btn" onclick="nextQuiz(2)">أيوه دايماً</button>
+        <button class="quiz-btn" onclick="nextQuiz(2)">أحياناً</button>
+        <button class="quiz-btn" onclick="nextQuiz(2)">لا خالص</button>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-step" id="q3" style="display:none;">
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--title-on-light);margin-bottom:16px;">3. هل بتتكسفي تطلبي تغيير أو تبادري إنتي خوفاً من رد فعله؟</h3>
+        <button class="quiz-btn" onclick="showQuizResult()">أيوه بتكسف جداً</button>
+        <button class="quiz-btn" onclick="showQuizResult()">بحاول بس مبعرفش</button>
+        <button class="quiz-btn" onclick="showQuizResult()">بطلب عادي</button>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-result" id="quiz-result" style="display:none;background:var(--surface-light);border:1px solid var(--clr-gold);border-radius:12px;padding:24px;text-align:center;">
+        <div style="font-size:30px;margin-bottom:10px;">📊</div>
+        <h3 style="font-family:var(--font-display);font-size:20px;color:var(--clr-rose);margin-bottom:12px;font-weight:900;">نتيجة التحليل:</h3>
+        <p style="font-size:15px;color:var(--text-on-light);line-height:1.7;margin-bottom:20px;">
+          علاقتكم بتعاني من <strong>روتين صامت</strong> ومحتاجة <strong>'كسر نمط' فوري</strong> قبل ما يتحول لخرس زوجي.<br><br>
+          إنتِ مش محتاجة نصايح عامة، إنتِ محتاجة خطوات واضحة تطبقيها الليلة. احصلي على كتالوج <strong>(الأنثى اللي لا تُنسى)</strong> وابدئي التغيير.
+        </p>
+        <a href="#final-cta" class="cta-btn" style="padding:16px;font-size:16px;max-width:100%;" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">اكتشفي الحل دلوقتي ⬅️</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.quiz-step { background:var(--surface-light); border:1px solid var(--border-light); border-radius:12px; padding:24px; box-shadow:0 4px 15px rgba(0,0,0,0.05); }
+.quiz-btn { display:block; width:100%; text-align:right; background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.3); border-radius:8px; padding:16px; margin-bottom:12px; font-family:var(--font-display); font-size:15px; font-weight:700; color:var(--title-on-light); cursor:pointer; transition:all 0.2s; }
+.quiz-btn:hover { background:var(--clr-gold); color:#fff; }
+</style>
+<script>
+function nextQuiz(step) {
+  document.getElementById('q'+step).style.display = 'none';
+  document.getElementById('q'+(step+1)).style.display = 'block';
+}
+function showQuizResult() {
+  document.getElementById('q3').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+  if(typeof fbq === 'function') fbq('trackCustom', 'QuizCompleted');
+}
+</script>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║           FINAL CTA              ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section id="final-cta" class="section-dark fade-up">
+  <div class="container">
+    <div class="tag-pill" style="margin-bottom:20px;">ابدئي أول ليلة مختلفة</div>
+
+    <h2 class="section-title" style="text-align:center;margin-bottom:20px;">
+      لو العلاقة بقت محفوظة.<br>
+      <span>الكتاب هيديكي البداية.</span>
+    </h2>
+    <div class="gold-line" style="margin:20px auto;"></div>
+
+    <div class="price-box">
+      <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--title-on-dark);margin-bottom:20px;">العرض الحالي</h3>
+
+      <div class="offer-features-grid">
+        <div class="o-feature-card"><div class="o-feature-icon">📱</div><div class="o-feature-text">الكتاب الرقمي</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🌙</div><div class="o-feature-text">منيو ليالي جاهز</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🎁</div><div class="o-feature-text">3 مكافآت مجانية</div></div>
+        <div class="o-feature-card"><div class="o-feature-icon">🔒</div><div class="o-feature-text">خصوصية الاستلام</div></div>
+      </div>
+
+      <div class="price-tag" style="margin-bottom:4px;">450</div>
+      <div class="price-label" style="margin-bottom:28px;">جنيه مصري</div>
+
+      <a href="checkout.html" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" class="cta-btn" style="font-size:19px;padding:20px;">احصلي على الكتاب دلوقتي ✦</a>
+      
+      <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:20px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
+          <span style="color:#ff4d6d; animation: blink 1.2s infinite;">●</span>
+          للحفاظ على سرية وسرعة التسليم:
+        </div>
+        لأننا نراجع إيصالات التحويل يدوياً لضمان الخصوصية، ولضمان إرسال الـ PDF والمكافآت فوراً على الواتساب بمجرد تأكيد الدفع، <strong>نستقبل 50 طلب فقط يومياً.</strong><br>
+        <div style="margin-top:6px; font-weight:700; color:#ff4d6d;">⏳ الأماكن المتاحة المتبقية اليوم: 4 أماكن فقط.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║          WARNING / LEGAL         ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section-light">
+  <div class="container">
+    <div class="alert-box danger" style="flex-direction: column; align-items: center; text-align: center; background: rgba(176,64,96,0.05); border: 1px dashed rgba(176,64,96,0.2);">
+      <strong>⚠ تنبيه مهم</strong>
+      <p style="margin-top: 8px;">هذا المحتوى مخصص للمتزوجات فقط +18، داخل إطار العلاقة الزوجية، وبما يحفظ الخصوصية والاحترام المتبادل.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║             FOOTER               ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<footer>
+  <div class="footer-title">الأنثى اللي لا تُنسى</div>
+  <div class="ornament">✦ ✦ ✦</div>
+  <p>كتاب رقمي خاص للمتزوجات فقط +18<br>محتوى عملي، واضح، جريء، وبيحترم خصوصيتك.</p>
+  <div style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(201, 169, 110, 0.1);">
+    <p>جميع الحقوق محفوظة © 2024</p>
+  </div>
+</footer>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║         STICKY MOBILE CTA        ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-text">
+      <strong>الأنثى اللي لا تُنسى</strong>
+      كتاب رقمي خاص +18
+    </div>
+    <a href="checkout.html" onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" class="sticky-btn">احصلي على الكتاب — 450 جنيه</a>
+  </div>
+</div>
+
+<!-- ── NEW: LIGHTBOX MODAL ── -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  
+  <!-- ستظهر الصورة هنا إذا تم تمرير الرابط -->
+  <img class="lightbox-content" id="lightboxImg" src="" alt="العينة مكبرة">
+  
+  <!-- مربع بديل يظهر في حال عدم وجود صورة بعد -->
+  <div class="lightbox-placeholder" id="lightboxPlaceholder">
+    <div style="font-size: 40px; margin-bottom: 16px;">🖼️</div>
+    <div>سيتم عرض الصورة المكبرة هنا</div>
+  </div>
+</div>
+
+<script>
+  // دالة فتح نافذة الصورة المكبرة
+  function openLightbox(imageSrc) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    const placeholder = document.getElementById('lightboxPlaceholder');
+
+    // التحقق من وجود رابط للصورة
+    if (imageSrc && imageSrc.trim() !== '') {
+      img.src = imageSrc;
+      img.style.display = 'block';
+      placeholder.style.display = 'none';
+    } else {
+      img.style.display = 'none';
+      placeholder.style.display = 'flex';
+    }
+    
+    lightbox.classList.add('show');
+  }
+
+  // دالة إغلاق النافذة
+  function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('show');
+  }
+
+  // إغلاق النافذة عند الضغط خارج الصورة
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target !== document.getElementById('lightboxImg')) {
+      closeLightbox();
+    }
+  });
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const sticky = document.getElementById('stickyCta');
+  const finalCta = document.getElementById('final-cta');
+  window.addEventListener('scroll', () => {
+    if (!finalCta || !sticky) return;
+    const rect = finalCta.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      sticky.style.opacity = '0';
+      sticky.style.pointerEvents = 'none';
+    } else {
+      sticky.style.opacity = '1';
+      sticky.style.pointerEvents = 'auto';
+    }
+  });
+  sticky.style.transition = 'opacity 0.3s';
+</script>
+
+
+<!-- FOMO Sales Popup -->
+<div id="sales-fomo" style="position:fixed; bottom:-100px; right:20px; background:#fff; border-right:4px solid var(--clr-gold); border-radius:8px; padding:12px 16px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:9999; display:flex; align-items:center; gap:12px; font-family:var(--font-display); font-size:14px; transition:bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); direction:rtl; opacity:0;">
+  <div style="background:var(--clr-gold); color:#fff; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px;">✨</div>
+  <div>
+    <strong style="color:var(--title-on-light); display:block;" id="fomo-name">سارة م. من الإسكندرية</strong>
+    <span style="color:var(--text-on-light); font-size:13px;" id="fomo-action">حصلت على الكتاب و 3 مكافآت</span>
+    <div style="font-size:11px; color:var(--clr-muted); margin-top:2px;">منذ <span id="fomo-time">دقيقتين</span></div>
+  </div>
+</div>
+
+<!-- Exit Intent Popup -->
+<div id="exit-intent-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; display:none; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#fff; border-radius:16px; max-width:400px; width:100%; padding:30px; text-align:center; position:relative;">
+    <span onclick="document.getElementById('exit-intent-overlay').style.display='none'" style="position:absolute; top:15px; right:20px; font-size:24px; cursor:pointer; color:#999;">&times;</span>
+    <h3 style="font-family:var(--font-display); color:var(--clr-rose); margin-bottom:10px; font-size:22px; font-weight:800;">استني! قبل ما تمشي...</h3>
+    <p style="color:var(--text-on-light); margin-bottom:20px; font-size:15px; font-weight:600;">هل مترددة؟ خدي <strong>عينة مجانية</strong> من الكتاب واقرئي أول فصل عشان تتأكدي إنه مناسب ليكي.</p>
+    <a href="https://wa.me/201000000000?text=محتاجة العينة المجانية للكتاب" target="_blank" class="cta-btn" style="padding:15px; font-size:16px; background:#25D366; width:100%; color:white;">احصلي على العينة على واتساب 💬</a>
+  </div>
+</div>
+
+<script>
+// Tracking Events
+let scrollP = [25,50,75,90];
+window.addEventListener('scroll', () => {
+  let s = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+  scrollP.forEach(p => {
+    if(s >= p) {
+      if(typeof fbq === 'function') fbq('trackCustom', 'ScrollDepth', {percentage: p});
+      if(typeof gtag === 'function') gtag('event', 'scroll_depth', {percentage: p});
+      scrollP = scrollP.filter(x => x !== p);
+    }
+  });
+});
+
+setTimeout(()=> { if(typeof fbq === 'function') fbq('trackCustom', 'TimeOnPage', {seconds: 30}); }, 30000);
+setTimeout(()=> { if(typeof fbq === 'function') fbq('trackCustom', 'TimeOnPage', {seconds: 60}); }, 60000);
+setTimeout(()=> { if(typeof fbq === 'function') fbq('trackCustom', 'TimeOnPage', {seconds: 120}); }, 120000);
+
+// FOMO Script
+const fomoData = [
+  {n:'سارة م. من الإسكندرية', a:'حصلت على الكتاب و 3 مكافآت', t:'دقيقتين'},
+  {n:'نورهان ع. من القاهرة', a:'اشترت النسخة الآن', t:'5 دقائق'},
+  {n:'منى س. من السعودية', a:'اشتركت في العرض', t:'12 دقيقة'}
+];
+let fomoIdx = 0;
+const fomoEl = document.getElementById('sales-fomo');
+setInterval(() => {
+  if(!fomoEl) return;
+  document.getElementById('fomo-name').innerText = fomoData[fomoIdx].n;
+  document.getElementById('fomo-action').innerText = fomoData[fomoIdx].a;
+  document.getElementById('fomo-time').innerText = fomoData[fomoIdx].t;
+  fomoEl.style.bottom = '20px';
+  fomoEl.style.opacity = '1';
+  setTimeout(() => { fomoEl.style.bottom = '-100px'; fomoEl.style.opacity = '0'; }, 5000);
+  fomoIdx = (fomoIdx + 1) % fomoData.length;
+}, 15000);
+
+// Exit Intent Script
+let exitIntentShown = false;
+document.addEventListener('mouseleave', (e) => {
+  if(e.clientY < 0 && !exitIntentShown) {
+    document.getElementById('exit-intent-overlay').style.display = 'flex';
+    exitIntentShown = true;
+    if(typeof fbq === 'function') fbq('trackCustom', 'ExitIntentShown');
+  }
+});
+</script>
+</body>
+</html>
