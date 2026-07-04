@@ -578,7 +578,7 @@ fbq('trackCustom', 'ViewContent');
       <div class="price-tag">450</div>
       <div class="price-label">جنيه مصري — سعر الإطلاق</div>
 
-      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب دلوقتي</a>
+      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal();">احصلي على الكتاب دلوقتي</a>
       
       <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:16px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
@@ -1029,7 +1029,7 @@ function showQuizResult() {
       <div class="price-tag" style="margin-bottom:4px;">450</div>
       <div class="price-label" style="margin-bottom:28px;">جنيه مصري</div>
 
-      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');" style="font-size:19px;padding:20px;">احصلي على الكتاب دلوقتي ✦</a>
+      <a href="javascript:void(0)" class="cta-btn" onclick="openCheckoutModal();" style="font-size:19px;padding:20px;">احصلي على الكتاب دلوقتي ✦</a>
       
       <div style="background:rgba(201,169,110,0.05); border:1px solid rgba(201,169,110,0.2); border-radius:12px; padding:14px; margin-top:20px; text-align:right; font-size:13px; color:var(--clr-cream); line-height:1.6;">
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px; font-family:var(--font-display); font-weight:700; color:var(--clr-gold);">
@@ -1076,7 +1076,7 @@ function showQuizResult() {
       <strong>الأنثى اللي لا تُنسى</strong>
       كتاب رقمي خاص +18
     </div>
-    <a href="javascript:void(0)" class="sticky-btn" onclick="openCheckoutModal(); if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">احصلي على الكتاب — 450 جنيه</a>
+    <a href="javascript:void(0)" class="sticky-btn" onclick="openCheckoutModal();">احصلي على الكتاب — 450 جنيه</a>
   </div>
 </div>
 
@@ -1296,6 +1296,19 @@ document.addEventListener('mouseleave', (e) => {
         </div>
       </div>
     </form>
+    
+    <!-- Step 3: Success message -->
+    <div id="checkoutStep3" style="display:none; text-align:center;">
+        <div style="font-size:50px; margin-bottom:12px;">🎉</div>
+        <h3 style="color:var(--clr-gold-dark); font-size:24px; margin-bottom:10px; font-family:var(--font-display); font-weight:800;">تم تأكيد طلبك بنجاح!</h3>
+        <p style="font-size:15px; margin-bottom:24px; color:var(--text-on-light); font-weight:600; line-height:1.6;">
+            شكراً لثقتك بنا! لضمان وصول الكتاب إليكِ في أسرع وقت، 
+            برجاء إرسال <strong>سكرين شوت</strong> للإيصال على الواتساب المخصص للمؤسسة.
+        </p>
+        <a href="https://wa.me/201553089928?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D9%84%D9%82%D8%AF%20%D9%82%D9%85%D8%AA%20%D8%A8%D8%A7%D9%84%D8%AA%D8%AD%D9%88%D9%8A%D9%84%20%D9%88%D8%B1%D9%81%D8%B9%20%D8%A7%D9%84%D8%A5%D9%8A%D8%B5%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9" target="_blank" class="cta-btn" style="width:100%; display:block; background:#25D366; color:white; text-decoration:none; padding:18px; border-radius:12px; font-weight:800; font-size:18px; box-shadow:0 8px 20px rgba(37, 211, 102, 0.3);">
+            أرسلي الإيصال على الواتساب الآن 💬
+        </a>
+    </div>
 
     <div class="privacy-badge" style="text-align:center; font-size:13px; color:var(--clr-muted); margin-top:20px; display:flex; align-items:center; justify-content:center; gap:6px;">
       🔒 بياناتك مشفرة ومحمية بالكامل ولا يتم مشاركتها مطلقاً.
@@ -1340,7 +1353,7 @@ function liveSync() {
   const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
   
-  if (name.length > 2 && phone.length >= 10 && !isInitiated) {
+  if (phone.length >= 10 && !isInitiated) {
     const payload = {
       action: "initiate",
       orderId: orderId,
@@ -1356,6 +1369,7 @@ function liveSync() {
       body: JSON.stringify(payload)
     }).then(() => {
       isInitiated = true;
+      if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
     });
   }
 }
@@ -1445,8 +1459,13 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     body: JSON.stringify(payload)
   }).then(() => {
     if(typeof fbq === 'function') fbq('track', 'Purchase', {value: 450, currency: 'EGP'});
-    alert("تم تأكيد طلبك بنجاح! سيتم مراجعة الإيصال وإرسال الكتاب لكِ على الواتساب فوراً.");
-    window.location.href = "https://wa.me/201553089928?text=" + encodeURIComponent("مرحباً، تم تحويل 450 جنيه ورفع الإيصال في الموقع بانتظار استلام الكتاب.");
+    
+    // Hide Step 2 and Form, Show Step 3
+    document.getElementById('checkoutStep2').style.display = 'none';
+    document.getElementById('warningMsg').style.display = 'none';
+    document.getElementById('checkoutForm').style.display = 'none';
+    document.getElementById('checkoutStep3').style.display = 'block';
+    
   }).catch(error => {
     alert("حدث خطأ أثناء رفع الصورة، برجاء إرسال الإيصال على الواتساب.");
     document.getElementById('btnText').style.display = 'block';
