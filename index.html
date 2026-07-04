@@ -1172,9 +1172,9 @@ function showQuizResult() {
 </div>
 
 <!-- Exit Intent Popup -->
-<div id="exit-intent-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; display:none; align-items:center; justify-content:center; padding:20px;">
+<div id="exit-intent-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:100001; display:none; align-items:center; justify-content:center; padding:20px;">
   <div style="background:#fff; border-radius:16px; max-width:400px; width:100%; padding:30px; text-align:center; position:relative;">
-    <span onclick="document.getElementById('exit-intent-overlay').style.display='none'" style="position:absolute; top:15px; right:20px; font-size:24px; cursor:pointer; color:#999;">&times;</span>
+    <span onclick="document.getElementById('exit-intent-overlay').style.display='none'; document.getElementById('checkout-modal-overlay').style.display='none'; document.body.style.overflow='auto';" style="position:absolute; top:15px; right:20px; font-size:24px; cursor:pointer; color:#999;">&times;</span>
     <h3 style="font-family:var(--font-display); color:var(--clr-rose); margin-bottom:10px; font-size:22px; font-weight:800;">استني! قبل ما تمشي...</h3>
     <p style="color:var(--text-on-light); margin-bottom:20px; font-size:15px; font-weight:600;">هل مترددة؟ خدي <strong>عينة مجانية</strong> من الكتاب واقرئي أول فصل عشان تتأكدي إنه مناسب ليكي.</p>
     <a href="https://wa.me/201553089928?text=محتاجة العينة المجانية للكتاب" target="_blank" class="cta-btn" style="padding:15px; font-size:16px; background:#25D366; width:100%; color:white;">احصلي على العينة على واتساب 💬</a>
@@ -1219,14 +1219,7 @@ setInterval(() => {
 }, 15000);
 
 // Exit Intent Script
-let exitIntentShown = false;
-document.addEventListener('mouseleave', (e) => {
-  if(e.clientY < 0 && !exitIntentShown) {
-    document.getElementById('exit-intent-overlay').style.display = 'flex';
-    exitIntentShown = true;
-    if(typeof fbq === 'function') fbq('trackCustom', 'ExitIntentShown');
-  }
-});
+// Exit Intent logic moved to closeCheckoutModal
 </script>
 
 <!-- CHECKOUT MODAL OVERLAY -->
@@ -1252,8 +1245,13 @@ document.addEventListener('mouseleave', (e) => {
       <!-- Step 1 -->
       <div id="checkoutStep1">
         <div class="form-group" style="margin-bottom:16px;">
-          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">الاسم (يُفضل الاسم الأول فقط للحفاظ على الخصوصية)</label>
-          <input type="text" id="custName" placeholder="مثال: سارة" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">الاسم (اختياري)</label>
+          <input type="text" id="custName" placeholder="مثال: سارة" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+        </div>
+
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">البريد الإلكتروني (اختياري - لإرسال نسخة إضافية)</label>
+          <input type="email" id="custEmail" placeholder="مثال: sara@example.com" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
         </div>
 
         <div class="form-group" style="margin-bottom:20px;">
@@ -1338,9 +1336,16 @@ function openCheckoutModal() {
   document.body.style.overflow = 'hidden';
 }
 
+let exitIntentShown = false;
 function closeCheckoutModal() {
-  document.getElementById('checkout-modal-overlay').style.display = 'none';
-  document.body.style.overflow = 'auto';
+  if (!exitIntentShown && !isInitiated) {
+    document.getElementById('exit-intent-overlay').style.display = 'flex';
+    exitIntentShown = true;
+    if(typeof fbq === 'function') fbq('trackCustom', 'ExitIntentShown');
+  } else {
+    document.getElementById('checkout-modal-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
 }
 
 function copyText(elementId) {
@@ -1352,13 +1357,21 @@ function copyText(elementId) {
 function liveSync() {
   const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
+  const emailElement = document.getElementById('custEmail');
+  const email = emailElement ? emailElement.value.trim() : "";
   
-  if (phone.length >= 10 && !isInitiated) {
+  if (phone.length >= 10) {
+    if (!isInitiated) {
+      isInitiated = true; // Set synchronously to prevent double firing
+      if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+    }
+
     const payload = {
       action: "initiate",
       orderId: orderId,
       name: name,
       phone: phone,
+      email: email,
       price: "450"
     };
 
@@ -1367,14 +1380,15 @@ function liveSync() {
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
-    }).then(() => {
-      isInitiated = true;
-      if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
-    });
+    }).catch(e => console.error(e));
   }
 }
 
 document.getElementById('custName').addEventListener('input', () => {
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(liveSync, 2000);
+});
+document.getElementById('custEmail').addEventListener('input', () => {
   clearTimeout(syncTimeout);
   syncTimeout = setTimeout(liveSync, 2000);
 });
@@ -1391,11 +1405,10 @@ function updateWaBypassLink() {
 }
 
 function goToStep2() {
-  const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
   
-  if (!name || !phone) {
-    alert('برجاء إدخال الاسم ورقم الواتساب أولاً.');
+  if (!phone || phone.length < 10) {
+    alert('برجاء إدخال رقم الواتساب أولاً (10 أرقام على الأقل).');
     return;
   }
   
@@ -1443,11 +1456,13 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
   document.getElementById('btnLoader').style.display = 'block';
   document.getElementById('submitBtn').disabled = true;
 
+  const email = document.getElementById('custEmail').value.trim();
   const payload = {
     action: "upload",
     orderId: orderId,
     name: name,
     phone: phone,
+    email: email,
     base64Data: base64File,
     mimeType: mimeType
   };
