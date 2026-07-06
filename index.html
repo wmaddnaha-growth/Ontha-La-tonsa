@@ -1456,13 +1456,13 @@ setInterval(() => {
         </div>
 
         <div class="form-group" style="margin-bottom:16px;">
-          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">البريد الإلكتروني (اختياري - لإرسال نسخة إضافية)</label>
-          <input type="email" id="custEmail" placeholder="مثال: sara@example.com" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">رقم الواتساب (لإرسال الكتاب عليه)</label>
+          <input type="tel" id="custPhone" placeholder="مثال: 01000000000" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
         </div>
 
         <div class="form-group" style="margin-bottom:20px;">
-          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">رقم الواتساب (لإرسال الكتاب عليه)</label>
-          <input type="tel" id="custPhone" placeholder="مثال: 01000000000" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">البريد الإلكتروني (اختياري - لإرسال نسخة إضافية)</label>
+          <input type="email" id="custEmail" placeholder="مثال: sara@example.com" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
         </div>
 
         <button type="button" class="cta-btn" id="step1Btn" onclick="goToStep2()" style="width:100%; background:linear-gradient(135deg, var(--clr-gold) 0%, var(--clr-gold-dark) 100%); color:#fff; text-align:center; padding:18px; border-radius:12px; text-decoration:none; font-weight:800; font-size:18px; border:none; cursor:pointer;">إكمال الدفع ⬅️</button>
@@ -1613,6 +1613,8 @@ function copyText(elementId) {
   alert('تم نسخ الرقم: ' + text);
 }
 
+let hasSynced = false;
+
 function liveSync() {
   const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
@@ -1624,6 +1626,9 @@ function liveSync() {
       isInitiated = true; // Set synchronously to prevent double firing
       if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
     }
+
+    if (hasSynced) return;
+    hasSynced = true;
 
     const payload = {
       action: "initiate",
