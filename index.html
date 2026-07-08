@@ -1335,17 +1335,18 @@ setInterval(() => {
       <!-- Step 1 -->
       <div id="checkoutStep1">
         <div class="form-group" style="margin-bottom:16px;">
-          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">الاسم (اختياري)</label>
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">الاسم</label>
           <input type="text" id="custName" placeholder="مثال: سارة" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
         </div>
 
         <div class="form-group" style="margin-bottom:16px;">
           <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">رقم الواتساب (لإرسال الكتاب عليه)</label>
           <input type="tel" id="custPhone" placeholder="مثال: 01000000000" required style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
+          <div id="phoneError" style="display:none; color:#a52a44; background:rgba(165,42,68,0.05); border:1px solid rgba(165,42,68,0.2); padding:10px 12px; border-radius:8px; font-size:13px; font-weight:700; margin-top:8px;">⚠️ برجاء إدخال رقم هاتف مصري صحيح (11 رقم يبدأ بـ 01).</div>
         </div>
 
         <div class="form-group" style="margin-bottom:20px;">
-          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">البريد الإلكتروني (اختياري - لإرسال نسخة إضافية)</label>
+          <label style="display:block; font-weight:700; margin-bottom:8px; color:var(--title-on-light); font-size:14px;">البريد الإلكتروني</label>
           <input type="email" id="custEmail" placeholder="مثال: sara@example.com" style="width:100%; padding:14px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:15px; box-sizing:border-box;">
         </div>
 
@@ -1363,15 +1364,15 @@ setInterval(() => {
           <h3 style="font-size:16px; color:var(--title-on-light); margin-bottom:12px; font-weight:800; text-align:center;">قيمة اللي هتاخديه النهاردة:</h3>
           
           <div style="font-size:14px; color:var(--clr-muted); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed rgba(201,169,110,0.3); padding-bottom:8px;">
-            <span style="font-weight:600;">كتالوج "الأنثى اللي لا تُنسى"</span>
+            <span style="font-weight:600;">كتالوج "الأنثى اللي لا تُنسى" <span style="font-weight:900; color:var(--clr-gold-dark);">(350 صفحة)</span></span>
             <span style="color:#a52a44; font-weight:bold; font-size:13px; text-decoration:line-through;">510 ج</span>
           </div>
           <div style="font-size:14px; color:var(--clr-muted); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed rgba(201,169,110,0.3); padding-bottom:8px;">
-            <span style="font-weight:600;">دليل الرعشات (مكافأة)</span>
+            <span style="font-weight:600;">دليل الرعشات (مكافأة) <span style="font-weight:900; color:var(--clr-gold-dark);">(47 صفحة)</span></span>
             <span style="color:#a52a44; font-weight:bold; font-size:13px; text-decoration:line-through;">250 ج</span>
           </div>
           <div style="font-size:14px; color:var(--clr-muted); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed rgba(201,169,110,0.3); padding-bottom:8px;">
-            <span style="font-weight:600;">ملحق فك النكد (مكافأة)</span>
+            <span style="font-weight:600;">ملحق فك النكد (مكافأة) <span style="font-weight:900; color:var(--clr-gold-dark);">(18 صفحة)</span></span>
             <span style="color:#a52a44; font-weight:bold; font-size:13px; text-decoration:line-through;">150 ج</span>
           </div>
           <div style="font-size:14px; color:var(--clr-muted); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed rgba(201,169,110,0.3); padding-bottom:8px;">
@@ -1381,7 +1382,11 @@ setInterval(() => {
 
           <div style="text-align:center; margin-top:15px;">
             إجمالي المطلوب الدفع: <br>
-            <span style="font-size:28px; font-weight:900; color:var(--clr-gold-dark);">345</span> <span style="font-size:16px;">جنيه مصري</span>
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:5px;">
+              <span style="font-size:28px; font-weight:900; color:var(--clr-gold-dark); line-height:1;">345</span> 
+              <span style="font-size:16px; font-weight:bold;">جنيه مصري</span>
+              <span style="font-size:16px; color:#a52a44; text-decoration:line-through; font-weight:700;">(بدلاً من 1,110 ج.م)</span>
+            </div>
           </div>
         </div>
 
@@ -1545,6 +1550,8 @@ document.getElementById('custPhone').addEventListener('input', () => {
   clearTimeout(syncTimeout);
   syncTimeout = setTimeout(liveSync, 2000);
   updateWaBypassLink();
+  const errEl = document.getElementById('phoneError');
+  if (errEl) errEl.style.display = 'none';
 });
 
 function updateWaBypassLink() {
@@ -1557,9 +1564,12 @@ function goToStep2() {
   const phone = document.getElementById('custPhone').value.trim();
   const phoneRegex = /^01[0125][0-9]{8}$/;
   
+  const phoneErrorEl = document.getElementById('phoneError');
   if (!phoneRegex.test(phone)) {
-    alert('برجاء إدخال رقم هاتف مصري صحيح (11 رقم يبدأ بـ 01).');
+    phoneErrorEl.style.display = 'block';
     return;
+  } else {
+    if (phoneErrorEl) phoneErrorEl.style.display = 'none';
   }
   
   if(typeof fbq === 'function') fbq('track', 'Lead');
